@@ -6,6 +6,8 @@ This repository provides code used for the dipole flux transport (DFT) simulatio
 *Ultra-fast simulations of the solar dipole and open flux*  
 Submitted to Astronomy & Astrophysics
 
+`CreateFullPropagator.m`: Run this to create full propagator matrices needed for DFT simulations
+
 `Calc3DVectorSum.m`: Computes the 3‑component solar dipole vector from a stack of synoptic magnetograms using the vector sum method of Tähtinen et al. (2024,2026)
 
 `DFTSingleMap.m`: Runs DFT for a single map or a set of active regions using a precomputed propagator matrix, producing time series of dipole vectors.
