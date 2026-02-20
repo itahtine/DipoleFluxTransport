@@ -11,9 +11,9 @@ regs24 = regs24(idx);
 regs24 = regs24(idx);
 
 %% Propagators
-load('VectorMapDiff350Mer11.mat')
+load('VectorMapFullDiff350Mer11CR.mat')
 VectorMapCar = VectorMap;
-load('VectorMapDailyResDiff350Mer11.mat')
+load('VectorMapFullDiff350Mer11Daily.mat')
 
 %% Single AR, DFT, 54 rotations (= 4 years), Carrington res
 % Type of active region data: struct
@@ -154,4 +154,5 @@ function [vsft,tsft,psft] = SFTWrapper(regs,dif,mer,rot0,rot1,map0)
 [vsft,tsft,psft] = Calc3DVectorSum(SFTMaps);
 
 end
+
 
