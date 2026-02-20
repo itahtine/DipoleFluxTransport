@@ -1,8 +1,28 @@
+%   Simulates the dipole evolution due to:
+%       (1) an initial synoptic map MAP0, and
+%       (2) multiple active regions REGS emerging at times tvec.
+%
+%   Uses precomputed DFT propagator matrices G (daily or Carrington 
+%   resolution)
+%
+%   Inputs:
+%       regs      - Struct array with fields:
+%                      .vals (flux values)
+%                      .inds (pixel indices)
+%       tvec      - Emergence times for each region (days).
+%       map0      - Initial synoptic map (180×360).
+%       G         - Propagator: G(t, 3, Npix).
+%       T         - Total duration of simulation (days).
+#       timestep  - Temporal resolution of G (days).
+%
+%   Outputs:
+%       v     - Dipole magnitude time series.
+%       t     - Dipole latitude (radians).
+%       p     - Dipole longitude (radians).
+%       vmat  - Dipole vector components for each region.
+
 function [v,t,p,VMat] = DFTSim(regs,tvec,map0,G,T,timestep)
-% T in days
-% G is propagator matrix
-% tvec is zero for start of rot0+1
-%%
+
 % AR vectors
 nRegs = length(regs);
 simLength = round(T/timestep);
@@ -87,3 +107,4 @@ else
     t = t0;
     p = p0;
 end
+
