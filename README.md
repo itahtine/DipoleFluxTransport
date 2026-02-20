@@ -6,14 +6,14 @@ This repository provides code used for the dipole flux transport (DFT) simulatio
 *Ultra-fast simulations of the solar dipole and open flux*  
 Submitted to Astronomy & Astrophysics
 
-`Calc3DVectorSum.m`: Computes the 3‑component solar dipole vector (magnitude, θ, φ) from a stack of synoptic magnetograms using the vector‑sum method (vector directions from pixel locations; magnitude equals flux along axis).
+`Calc3DVectorSum.m`: Computes the 3‑component solar dipole vector from a stack of synoptic magnetograms using the vector sum method of Tähtinen et al. (2024,2026)
 
-`DFTSingleMap.m`: Runs DFT for a single map or a set of active regions using a precomputed propagator (`VectorMap` / `VM(t)`), producing time series of dipole magnitude and angles. Accepts either a `struct regs(i).vals/inds` or a 3‑D map stack.
+`DFTSingleMap.m`: Runs DFT for a single map or a set of active regions using a precomputed propagator matrix, producing time series of dipole vectors.
 
-`DFTSim.m`: Multi‑AR DFT simulation driver
+`DFTSim.m`: Runs DFT for multiple active regions emerging at arbitrary times
 
-`DFTExamplesTimeit.m`: MATLAB script used to produce the results shown in Table 1 of the paper.
+`DFTExamplesTimeit.m`: Produces the results shown in Table 1 of the paper.
 
-`SumDipoleVectorsRad.m`: Utility that sums dipole vectors across sources/time in spherical coordinates: input is a 3‑D array `(time, [mag θ φ], N)` and it converts to/from Cartesian to return the net dipole as `(mag, θ, φ)` in radians.
+`SumDipoleVectorsRad.m`: Utility that sums dipole vectors.
 
 `sft_sim_lin.m`: Reference SFT implementation used for validation and baseline comparisons in the paper.
