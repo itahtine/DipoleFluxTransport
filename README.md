@@ -10,9 +10,9 @@ Submitted to Astronomy & Astrophysics
 
 `DFTExamplesTimeit.m`: Code used to produce the results shown in Table 1 of the paper.
 
-`DFTSingleMap.m`: Runs DFT for a single map or a set of active regions using a precomputed propagator matrix, producing time series of dipole vectors.
+`DFTSingleMap.m`: Runs DFT independently for a single or multiple maps of active regions.
 
-`DFTSim.m`: Runs DFT for multiple active regions emerging at arbitrary times
+`DFTSim.m`: Runs DFT for multiple active regions emerging at arbitrary times and calculates their total dipole vector.
 
 `Calc3DVectorSum.m`: Computes the 3‑component solar dipole vector from a stack of synoptic magnetograms using the vector sum method of Tähtinen et al. (2024,2026)
 
