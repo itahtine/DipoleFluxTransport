@@ -1,3 +1,25 @@
+%   Simulates the time evolution of the dipole vector for a single map
+%   or a struct array of active regions using a precomputed DFT propagator.
+%
+%   Inputs:
+%       regs       - Either:
+%                    (a) struct array with fields:
+%                        .vals   (flux values), 
+%                        .inds   (linear indices in 180×360 map), or
+%                    (b) 3D array of maps (180×360×N).
+%
+%       VectorMap  - Propagator matrix, size:
+%                    (lat, lon, 3 components, time).
+%
+%       SimLength  - Number of timesteps (Carrington rotations or days,
+%                    depending on propagator resolution).
+%
+#   Outputs:
+%       vsumar - Dipole magnitude time series for each AR/map.
+%       tsumar  - Dipole latitude (degrees).
+%       psumar  - Dipole longitude (degrees).
+
+
 function [vsumar,tsumar,psumar] = DFTSingleMap(regs,VectorMap,simLength)
 % simLength in Carrington rotations
 
@@ -33,4 +55,5 @@ else
 end
 
 tsumar = rad2deg(tsumar);
+
 psumar = rad2deg(psumar);
