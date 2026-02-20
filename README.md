@@ -8,7 +8,7 @@ Submitted to Astronomy & Astrophysics
 
 `CreateFullPropagator.m`: Run this to create full propagator matrices needed for DFT simulations
 
-`DFTExamplesTimeit.m`: Produces the results shown in Table 1 of the paper.
+`DFTExamplesTimeit.m`: Code used to produce the results shown in Table 1 of the paper.
 
 `DFTSingleMap.m`: Runs DFT for a single map or a set of active regions using a precomputed propagator matrix, producing time series of dipole vectors.
 
