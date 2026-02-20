@@ -1,9 +1,8 @@
 %   Simulates the dipole evolution due to:
-%       (1) an initial synoptic map MAP0, and
-%       (2) multiple active regions REGS emerging at times tvec.
+%       (1) an initial synoptic map map0, and
+%       (2) multiple active regions regs emerging at times tvec.
 %
-%   Uses precomputed DFT propagator matrices G (daily or Carrington 
-%   resolution)
+%   Uses precomputed DFT propagator matrices G 
 %
 %   Inputs:
 %       regs      - Struct array with fields:
@@ -107,4 +106,5 @@ else
     t = t0;
     p = p0;
 end
+
 
