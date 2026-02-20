@@ -27,21 +27,6 @@ while reproducing Solar Cycle 24 dipole evolution within **≈1% accuracy** (see
 
 ---
 
-## Repository Contents
-
-```
-.
-├── Calc3DVectorSum.m                                         # Vector-sum dipole from maps
-├── DFTSim.m                                                  # DFT for multiple regions
-├── DFTSingleMap.m                                            # DFT for a single map
-├── SumDipoleVectorsRad.m                                     # Auxilar file for summing dipole vectors
-├── DFTExamplesTimeit.m                                       # Runtime tests
-├── sft_sim_lin.m                                             # SFT reference model
-└── README.md
-```
-
----
-
 ## Main Codes
 
 ### `Calc3DVectorSum.m`
