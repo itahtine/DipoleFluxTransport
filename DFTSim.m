@@ -12,7 +12,7 @@
 %       map0      - Initial synoptic map (180×360).
 %       G         - Propagator: G(t, 3, Npix).
 %       T         - Total duration of simulation (days).
-#       timestep  - Temporal resolution of G (days).
+%       timestep  - Temporal resolution of G (days).
 %
 %   Outputs:
 %       v     - Dipole magnitude time series.
@@ -106,5 +106,6 @@ else
     t = t0;
     p = p0;
 end
+
 
 
