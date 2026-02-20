@@ -14,7 +14,7 @@
 %       SimLength  - Number of timesteps (Carrington rotations or days,
 %                    depending on propagator resolution).
 %
-#   Outputs:
+%   Outputs:
 %       vsumar - Dipole magnitude time series for each AR/map.
 %       tsumar  - Dipole latitude (degrees).
 %       psumar  - Dipole longitude (degrees).
@@ -57,3 +57,4 @@ end
 tsumar = rad2deg(tsumar);
 
 psumar = rad2deg(psumar);
+
