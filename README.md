@@ -19,3 +19,9 @@ Submitted to Astronomy & Astrophysics
 `SumDipoleVectorsRad.m`: Utility that sums dipole vectors.
 
 `sft_sim_lin.m`: Reference SFT implementation used for validation and baseline comparisons in the paper.
+
+**References**
+
+Tähtinen, I., Asikainen, T., & Mursula, K. (2024), Astronomy and Astrophysics, 688, L32, https://doi.org/10.1051/0004-6361/202451267
+
+Tähtinen, I., Asikainen, T., & Mursula, K. (2026), Astronomy and Astrophysics, 706, A235, https://doi.org/10.1051/0004-6361/202557466
