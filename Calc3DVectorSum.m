@@ -1,18 +1,15 @@
-
-%   Computes the total solar dipole vector using the vector-sum method
-%   (Tähtinen et al. 2024, 2026). Each pixel of the magnetogram is treated
-%   as a vector in spherical coordinates with magnitude equal to its total
-%   magnetic flux and direction given by its surface location.
+%   Computes the solar dipole vector using the vector sum method
+%   (Tähtinen et al. 2024, 2026).
 %
 %   Input:
-%       MAP  - 3D array of size (lat, lon, time or Nmaps), containing
+%       map  - 3D array of size (lat, lon, time or Nmaps), containing
 %              magnetic field values (gauss). Can represent a time series
 %              or a collection of maps.
 %
 %   Output:
-%       MAG   - Dipole vector magnitude for each map (units of flux).
-%       THETA - Dipole latitude in degrees.
-%       PHI   - Dipole longitude in degrees. Add 180 for Carrington longitude.
+%       mag   - Dipole vector magnitude for each map (units of flux).
+%       theta - Dipole latitude in degrees.
+%       phi   - Dipole longitude in degrees. Add 180 for Carrington longitude.
 
 function [mag,theta,phi] = Calc3DVectorSum(map)
 
@@ -41,3 +38,4 @@ mag(idx) = NaN;
 theta(idx) = NaN;
 
 phi(idx) = NaN;
+
