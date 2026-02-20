@@ -1,11 +1,20 @@
+
+%   Sums N dipole vectors given in spherical coordinates and returns the
+%   combined dipole vector in spherical form (magnitude, theta, phi).
+%
+%   Input:
+%       VECMAT - Array of size (T, 3, N), where:
+%                T = number of time steps,
+%                3 = [magnitude, theta, phi],
+%                N = number of dipole vectors to sum.
+%                Angles must be in radians.
+%
+%   Output:
+%       MAG   - Resulting combined dipole magnitude (T × 1).
+%       THETA - Resulting dipole latitude in radians.
+%       PHI   - Resulting dipole longitude in radians.
+
 function [mag,theta,phi] = SumDipoleVectorsRad(VecMat)
-
-% 1. Dim: Time
-% 2. Dim: Mag, theta, phi
-% 3. Dim: N-vectors
-
-% theta: -pi/2 to pi/2
-% phi: -pi to pi
 
 if length(size(VecMat)) ~= 3 || size(VecMat,2) ~= 3
     error('Matrix must have dimensions (t,3,N), where t is time, 3 corresponds to components of the vector sum (mag,theta,phi), and N is the number of vectors.')
@@ -32,3 +41,4 @@ z = sum(z, 3, 'omitnan');
 mag = abs(mag);
 
 %%
+
