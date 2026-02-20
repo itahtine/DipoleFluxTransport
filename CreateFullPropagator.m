@@ -1,3 +1,5 @@
+% Creates full propagator matrices from latitude slices
+
 %%
 load('VectorMapSliceDiff350Mer11CR')
 
@@ -20,4 +22,5 @@ for i = 1:360
 end
 
 %save(VectorMapFullDiff350Mer11Daily','VectorMap')
+
 %%
