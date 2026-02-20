@@ -1,3 +1,13 @@
+%   Runs a collection of runtime tests.
+%   These tests reproduce the timing comparisons presented in Table 1 of
+%   the paper "Ultra-fast simulations of the solar dipole and open flux".
+%
+%   Included benchmarks:
+%       • Single active region evolution (4 years)
+%       • Daily vs Carrington resolution DFT
+%       • Full Solar Cycle 24 dipole simulation
+%       • Hindcast of 180 days
+
 %% HMI synoptic maps and SHARPs
 load('HMIStackFilled.mat')
 load('SHARPRegsNoRepeat.mat')
@@ -149,4 +159,5 @@ end
 function [vsft,tsft,psft] = SFTWrapper(regs,dif,mer,rot0,rot1,map0)
 [~,SFTMaps] = sft_sim_lin(regs,dif,mer,rot0,rot1,map0);
 [vsft,tsft,psft] = Calc3DVectorSum(SFTMaps);
+
 end
