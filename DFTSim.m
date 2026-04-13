@@ -5,9 +5,11 @@
 %   Uses precomputed DFT propagator matrices G 
 %
 %   Inputs:
-%       regs      - Struct array with fields:
-%                      .vals (flux values)
-%                      .inds (pixel indices)
+%       regs      - Either
+                    (a) Struct array with fields:
+%                       .vals (flux values)
+%                       .inds   (linear indices in 180×360 map), or
+%                   (b) 3D array of AR maps (180×360×N).
 %       tvec      - Emergence times for each region (days).
 %       map0      - Initial synoptic map (180×360).
 %       G         - Propagator: G(t, 3, Npix).
@@ -22,8 +24,16 @@
 
 function [v,t,p,VMat] = DFTSim(regs,tvec,map0,G,T,timestep)
 
+% Determine the type of AR data
+structflag = isa(regs,'struct');
+
+if structflag
+    nRegs = length(regs);
+else
+    nRegs = size(regs,3);
+end
+
 % AR vectors
-nRegs = length(regs);
 simLength = round(T/timestep);
 
 [vsumar,tsumar,psumar] = deal(nan(simLength,nRegs));
@@ -36,8 +46,14 @@ deltaT = T-tvec;
 nSteps = floor(deltaT/timestep); % Number of full steps
 
 for i = 1:nRegs
-    map  = regs(i).vals;
-    idx = regs(i).inds;
+
+    if structflag
+        vals = regs(i).vals;
+        idx = regs(i).inds;
+    else
+        [row,col,vals] = find(regs(:,:,i));
+        idx = sub2ind([180,360],row,col);
+    end
     
     if tvec(i) == 0
         tsteps = 0:timestep:nSteps(i)*timestep;
@@ -48,7 +64,7 @@ for i = 1:nRegs
 
     if nSteps(i) == 0 & deltaT(i) <= 0.5
         map = zeros(180,360);
-        map(idx) =  regs(i).vals;
+        map(idx) =  vals;
         
         [v,t,p] = Calc3DVectorSum(map);
         vsumar(idx2,i) = v;
@@ -57,15 +73,15 @@ for i = 1:nRegs
     elseif nSteps(i) == 0 & deltaT(i) > 0.5
         tsteps = round(timestep-mod(tvec(i),timestep));
         VMat = G(tsteps,:,idx);
-        VMat(:,1,:) = VMat(:,1,:).*reshape(map, 1, 1, []);
+        VMat(:,1,:) = VMat(:,1,:).*reshape(vals, 1, 1, []);
         [vsumar(idx1(i):idx2,i),tsumar(idx1(i):idx2,i),psumar(idx1(i):idx2,i)] = SumDipoleVectorsRad(VMat);
     elseif tsteps(1) == 0
         VMat = G(tsteps(2:end),:,idx);
-        VMat(:,1,:) = VMat(:,1,:).*reshape(map, 1, 1, []);
+        VMat(:,1,:) = VMat(:,1,:).*reshape(vals, 1, 1, []);
         [vsumar(idx1(i)+1:idx2,i),tsumar(idx1(i)+1:idx2,i),psumar(idx1(i)+1:idx2,i)] = SumDipoleVectorsRad(VMat);
 
         map = zeros(180,360);
-        map(idx) =  regs(i).vals;
+        map(idx) =  vals;
         [v,t,p] = Calc3DVectorSum(map);
         vsumar(idx1(i),i) = v;
         tsumar(idx1(i),i) = deg2rad(t);
@@ -106,6 +122,3 @@ else
     t = t0;
     p = p0;
 end
-
-
-
