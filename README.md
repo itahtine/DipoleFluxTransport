@@ -20,6 +20,8 @@ Submitted to Astronomy & Astrophysics
 
 `sft_sim_lin.m`: Reference SFT implementation used for validation and baseline comparisons in the paper.
 
+`SimulationExample.m`: Produces example below. Works for every active region.
+
 ![image](SimulationExample.png)
 
 **References**
