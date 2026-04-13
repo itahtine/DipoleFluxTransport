@@ -6,7 +6,7 @@
 %
 %   Inputs:
 %       regs      - Either
-                    (a) Struct array with fields:
+%                   (a) Struct array with fields:
 %                       .vals (flux values)
 %                       .inds   (linear indices in 180×360 map), or
 %                   (b) 3D array of AR maps (180×360×N).
@@ -88,7 +88,7 @@ for i = 1:nRegs
         psumar(idx1(i),i) = deg2rad(p+180);
     elseif tsteps(1) > 0
         VMat = G(tsteps,:,idx);
-        VMat(:,1,:) = VMat(:,1,:).*reshape(map, 1, 1, []);
+        VMat(:,1,:) = VMat(:,1,:).*reshape(vals, 1, 1, []);
         [vsumar(idx1(i):idx2,i),tsumar(idx1(i):idx2,i),psumar(idx1(i):idx2,i)] = SumDipoleVectorsRad(VMat);
     end
 end
