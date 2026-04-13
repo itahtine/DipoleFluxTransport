@@ -11,6 +11,7 @@ regs24 = regs24(idx);
 regs24 = regs24(idx);
 
 %% Propagators
+% CreateFullPropagator % Uncomment if you haven't already created full propagators with CreateFullPropagator.m
 load('VectorMapFullDiff350Mer11CR.mat')
 VectorMapCar = VectorMap;
 load('VectorMapFullDiff350Mer11Daily.mat')
