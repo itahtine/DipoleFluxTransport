@@ -1,4 +1,5 @@
 % This code should produce SimulationExample.png
+% Can be used for any active region in provided SHARP catalogue
 
 load('SHARPRegsNoRepeat.mat')
 load('VectorMapFullDiff350Mer11CR.mat')
